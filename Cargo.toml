@@ -1,0 +1,22 @@
+[package]
+name = "pm-bin"
+version = "0.1.0-a1"
+edition = "2021"
+license = "MIT"
+
+authors = ["secext2022 <secext2022@outlook.com>"]
+description = "Util for rust CLI program"
+repository = "https://github.com/fm-elpac/pm-bin"
+keywords = ["cli", "util"]
+categories = ["command-line-interface", "development-tools::build-utils"]
+
+[dependencies]
+log = "^0.4.22"
+env_logger = "^0.11.5"
+
+built = { version = "^0.7.4", optional = true }
+vergen-gitcl = { version = "^1.0.0", features = ["build"], optional = true }
+
+[features]
+default = []
+build = ["built", "vergen-gitcl"]

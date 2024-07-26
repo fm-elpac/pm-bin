@@ -1,0 +1,13 @@
+[package]
+name = "hello"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pm-bin = { path = "../.." }
+
+[build-dependencies]
+pm-bin = { path = "../..", features = ["build"] }
+
+[features]
+default = []
