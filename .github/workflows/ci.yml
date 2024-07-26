@@ -28,5 +28,5 @@ jobs:
         example/hello/target/release/hello
     - uses: actions/upload-artifact@v4
       with:
-        name: hello_release_x86_64-unknown-linux-gnu.tar.zst
-        path: hello_release_x86_64-unknown-linux-gnu
+        name: hello_release_x86_64-unknown-linux-gnu
+        path: hello_release_x86_64-unknown-linux-gnu.tar.zst
