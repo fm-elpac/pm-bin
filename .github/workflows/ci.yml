@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: cargo fmt --check
 
@@ -26,7 +26,7 @@ jobs:
       - run: |
           tar --zstd -cvf hello_release_x86_64-unknown-linux-gnu.tar.zst \
           example/hello/target/release/hello
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: hello_release_x86_64-unknown-linux-gnu
           path: hello_release_x86_64-unknown-linux-gnu.tar.zst
