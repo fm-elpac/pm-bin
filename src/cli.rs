@@ -31,6 +31,6 @@ macro_rules! pm_init {
         mod pm_bin_include {
             include!(concat!(env!("OUT_DIR"), "/pm_bin.rs"));
         }
-        use pm_bin_include::print_version;
+        use pm_bin_include::{get_version, get_version_debug, print_version};
     };
 }
