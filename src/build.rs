@@ -6,7 +6,7 @@ use std::io::prelude::*;
 use std::path::PathBuf;
 
 use built;
-use vergen_gitcl::{BuildBuilder, Emitter, GitclBuilder};
+use vergen_gitcl::{Build, Emitter, Gitcl};
 
 /// Collect info in `build.rs`
 ///
@@ -23,14 +23,14 @@ pub fn build_gen(git: Option<String>) -> Result<(), Box<dyn Error>> {
     }
 
     // 每次编译都重新运行 `build.rs`
+    let build = Build::all_build();
+    let gitcl = Gitcl::builder()
+        .describe(true, false, None)
+        .sha(false)
+        .build();
     Emitter::default()
-        .add_instructions(&BuildBuilder::all_build()?)?
-        .add_instructions(
-            &GitclBuilder::default()
-                .describe(true, false, None)
-                .sha(false)
-                .build()?,
-        )?
+        .add_instructions(&build)?
+        .add_instructions(&gitcl)?
         .emit()?;
     // `.git/index`
     if let Some(g) = git {
