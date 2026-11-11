@@ -14,6 +14,7 @@ mod cli;
 pub use build::build_gen;
 pub use cli::{cli_arg, init_env_logger};
 
+/// for `cargo fmt`
 #[cfg(feature = "src")]
 #[path = "./build_src/pm_bin.rs"]
 mod build_src;

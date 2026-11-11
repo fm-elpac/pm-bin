@@ -2,6 +2,7 @@
 name = "hello"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 [dependencies]
 pm-bin = { path = "../.." }
@@ -11,3 +12,7 @@ pm-bin = { path = "../..", features = ["build"] }
 
 [features]
 default = []
+
+[profile.release]
+strip = true
+lto = true

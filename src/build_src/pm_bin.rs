@@ -17,11 +17,19 @@ pub fn get_version() -> String {
 
 /// debug version string
 pub fn get_version_debug() -> String {
-    let git = env!("VERGEN_GIT_DESCRIBE");
+    // 修复: 不在 git repo 中编译
+    let git = option_env!("VERGEN_GIT_DESCRIBE");
+
     let profile = built_info::PROFILE;
     let time = env!("VERGEN_BUILD_TIMESTAMP");
     let rustc = built_info::RUSTC_VERSION;
-    format!("{} {} {}, {}", git, profile, time, rustc)
+    format!(
+        "{} {} {}, {}",
+        git.unwrap_or("unknown"),
+        profile,
+        time,
+        rustc
+    )
 }
 
 /// show version info

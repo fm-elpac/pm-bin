@@ -1,6 +1,6 @@
 [package]
 name = "pm-bin"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2024"
 license = "MIT"
 
@@ -11,13 +11,15 @@ keywords = ["cli", "util"]
 categories = ["command-line-interface", "development-tools::build-utils"]
 
 [dependencies]
-log = "^0.4.33"
+log = "^0.4.35"
 env_logger = "^0.11.11"
 
 built = { version = "^0.8.1", optional = true }
-vergen-gitcl = { version = "^10.0.1", features = ["build"], optional = true }
+vergen-gitcl = { version = "^10.0.3", features = ["build"], optional = true }
 
 [features]
 default = []
-build = ["built", "vergen-gitcl"]
+# enable this in `build-dependencies`
+build = ["dep:built", "dep:vergen-gitcl"]
+# for `cargo fmt`
 src = []
